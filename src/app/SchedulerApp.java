@@ -20,7 +20,7 @@ public class SchedulerApp {
         this.scanner = new Scanner(System.in);
 
         // Load the date
-        List<Course> catalog = DataLoader.laodCourses();
+        List<Course> catalog = DataLoader.loadCourses();
         List<Professor> faculty = DataLoader.loadProfessors();
         this.masterSchedule = DataLoader.loadSections(catalog, faculty);
 

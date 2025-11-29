@@ -37,6 +37,10 @@ public class Course {
         return preRequisites;
     }
 
+    public double getCredits() {
+        return credits;
+    }
+
     @Override
     public String toString() {
         return courseId + ": " + name;
@@ -54,4 +58,5 @@ public class Course {
     public int hashCode() {
         return Objects.hash(courseId);
     }
+
 }

@@ -11,13 +11,20 @@ public class Professor {
         this.department = department;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public String getDepartment() {
+        return department;
     }
 
     @Override
     public String toString() {
         return name + " (" + department + ")";
     }
-
 }

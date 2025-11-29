@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DataLoader {
 
-    public static List<Course> laodCourses() {
+    public static List<Course> loadCourses() {
         List<Course> courses = new ArrayList<>();
 //        courses.add(new Course("CSI 403", "Algorithms", 3.0));
 //        courses.add(new Course("CSI 410", "Database Systems", 3.0));
