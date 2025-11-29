@@ -26,36 +26,25 @@ public class Student {
         return id;
     }
 
-    public void addCompletedCourse(Course course) {
-        if (!transcript.contains(course)) {
-            transcript.add(course);
-        }
+    public String getFirstName() {
+        return firstName;
     }
 
-    @Override
-    public String toString() {
-        return firstName + " " + lastName + " (" + id + ")";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return Objects.equals(id, student.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public String getLastName() {
+        return lastName;
     }
 
     public List<Course> getTranscript() {
         return transcript;
     }
 
-    public void setTranscript(List<Course> transcript) {
-        this.transcript = transcript;
+    public List<Section> getCurrentSchedule() {
+        return currentSchedule;
+    }
+    public void addCompletedCourse(Course course) {
+        if (!transcript.contains(course)) {
+            transcript.add(course);
+        }
     }
 
     public void registerForSection(Section newSection) {
@@ -84,10 +73,6 @@ public class Student {
         System.out.println("Success: Dropped " + sectionToDrop);
     }
 
-    public List<Section> getCurrentSchedule() {
-        return currentSchedule;
-    }
-
     public boolean checkPrerequisites(Course targetCourse) {
         // 1. Get the list of what is required
         List<Course> required = targetCourse.getPreRequisites();
@@ -105,7 +90,22 @@ public class Student {
         return true;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " (" + id + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(id, student.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
 }
