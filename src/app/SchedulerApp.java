@@ -1,9 +1,9 @@
 package app;
 
-import model.Course;
-import model.Professor;
 import model.Section;
 import model.Student;
+
+import dao.SectionDAO;
 
 import java.util.List;
 import java.util.Scanner;
@@ -15,19 +15,35 @@ public class SchedulerApp {
     private Student user;
     private List<Section> masterSchedule;
 
-    // Constructor: Sets up the date
+    // Constructor: Sets up the data
     public SchedulerApp() {
         this.scanner = new Scanner(System.in);
 
-        // Load the date
-        List<Course> catalog = DataLoader.loadCourses();
-        List<Professor> faculty = DataLoader.loadProfessors();
-        this.masterSchedule = DataLoader.loadSections(catalog, faculty);
+//        ---OLD FAKE DATA---
+//
+//        // Load the data
+//        List<Course> catalog = DataLoader.loadCourses();
+//        List<Professor> faculty = DataLoader.loadProfessors();
+//        this.masterSchedule = DataLoader.loadSections(catalog, faculty);
+//
+//        // Set up the user
+//        this.user = new Student("007", "James", "Bond", "jbond@mi6.gov");
+//        user.addCompletedCourse(catalog.get(0)); // Algo
+//        user.addCompletedCourse(catalog.get(1)); // Db
 
-        // Set up the user
+//      --- NEW REAL DATABASE ---
+        System.out.println("Connecting to Postgres...");
+
+        // 1. Create the DAO
+        SectionDAO sectionDao = new SectionDAO();
+
+        // 2. Load the data using the JOIN query
+        this.masterSchedule = sectionDao.loadAll();
+
+        System.out.println("Data Loaded. Found " + masterSchedule.size() + " sections.");
+
         this.user = new Student("007", "James", "Bond", "jbond@mi6.gov");
-        user.addCompletedCourse(catalog.get(0)); // Algo
-        user.addCompletedCourse(catalog.get(1)); // Db
+
     }
 
     // The Game Loop

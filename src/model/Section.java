@@ -24,6 +24,18 @@ public class Section {
         return course;
     }
 
+    public Professor getInstructor() {
+        return instructor;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
         //This prints: "Section 12345: Algorithms with Dr.Smith[Monday 10:00 AM]"

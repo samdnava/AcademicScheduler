@@ -1,4 +1,4 @@
-package app.dao;
+package dao;
 
 import app.DatabaseConnection;
 import model.Professor;
